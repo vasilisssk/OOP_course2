@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Category {
-
     private String name;
     private int booksAmount = 0;
     private List<Book> books = new ArrayList<>();

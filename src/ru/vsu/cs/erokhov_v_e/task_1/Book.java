@@ -11,13 +11,8 @@ public class Book {
     private String genre;
     private double price;
     private List<Category> categories = new ArrayList<>();
-    private int copiesNumber = 1; //кол-во экземпляров
-    private int numberInStack = 0; //номер в шкафу, счет ведется с нижней полки слева
-    private List<Integer> stackNumbers = new ArrayList<>(); //номер шкафов, где есть книга
+    private int copiesNumber = 1;
 
-    /*
-    Категорию можно добавить потом
-     */
     public Book(String name, String author, int pageAmount, String genre, double price) {
         this.name = name;
         this.author = author;
@@ -32,7 +27,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return this.name;
+        return name + " <" + author + ">";
     }
 
     @Override
@@ -105,21 +100,5 @@ public class Book {
 
     public void setCopiesNumber(int copiesNumber) {
         this.copiesNumber = copiesNumber;
-    }
-
-    public int getNumberInStack() {
-        return numberInStack;
-    }
-
-    public void setNumberInStack(int numberInStack) {
-        this.numberInStack = numberInStack;
-    }
-
-    public List<Integer> getStackNumbers() {
-        return List.copyOf(stackNumbers);
-    }
-
-    public void setStackNumbers(int number) {
-        this.stackNumbers.add(number);
     }
 }
