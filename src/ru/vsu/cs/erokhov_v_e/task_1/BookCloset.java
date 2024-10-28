@@ -13,7 +13,14 @@ public class BookCloset extends BookStorage {
 
     @Override
     public void addBook(Book book) {
+//        int newCopiesNumber = 1;
         if (!isFull()) {
+//            for (Book bookInList : bookList) {
+//                if (bookInList.equals(book)) {
+//                    newCopiesNumber+=1;
+//                }
+//            }
+//            book.setCopiesNumber(newCopiesNumber);
             bookList.add(book);
             bookList.sort(new Comparator<Book>() {
                 @Override
@@ -95,5 +102,13 @@ public class BookCloset extends BookStorage {
 
     public void setMaxBooksNumber(int maxBooksNumber) {
         this.maxBooksNumber = maxBooksNumber;
+    }
+
+    public List<Book> getBookList() {
+        return List.copyOf(bookList);
+    }
+
+    public void setBookList(List<Book> bookList) {
+        this.bookList = List.copyOf(bookList);
     }
 }

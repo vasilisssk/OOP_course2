@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class LibraryStorage extends BookStorage {
+public class Library extends BookStorage {
     private String name;
     private Map<String, List<BookCloset>> bookMap = new TreeMap<>();
 
-    public LibraryStorage(String name) {
+    public Library(String name) {
         this.name = name;
     }
 
@@ -25,7 +25,20 @@ public class LibraryStorage extends BookStorage {
             BookCloset bookCloset = new BookCloset(bookMap.get(bookKey).size()+1);
             bookMap.get(bookKey).add(bookCloset);
         }
+        int newCopiesNumber = 1;
+        if (bookMap.get(bookKey).size() != 0) {
+            List<BookCloset> bookClosetList = bookMap.get(bookKey);
+            for (int i = 0; i < bookClosetList.size(); i++) {
+                for (int j = 0; j < bookClosetList.get(i).getBookList().size(); j++) {
+                    if (bookClosetList.get(i).getBookList().get(j).equals(book)) {
+                        newCopiesNumber++;
+                    }
+                }
+            }
+        }
+        book.setCopiesNumber(newCopiesNumber);
         bookMap.get(Character.toString(book.getName().charAt(0))).get(bookMap.get(bookKey).size()-1).addBook(book);
+
     }
 
     @Override
