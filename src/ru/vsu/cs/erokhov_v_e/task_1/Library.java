@@ -32,13 +32,13 @@ public class Library extends BookStorage {
                 for (int j = 0; j < bookClosetList.get(i).getBookList().size(); j++) {
                     if (bookClosetList.get(i).getBookList().get(j).equals(book)) {
                         newCopiesNumber++;
+                        bookClosetList.get(i).getBookList().get(j).setCopiesNumber(newCopiesNumber); // обновляет serialNumber ещё и у похожих книг в списке, для метода addBooks(Book... books)
                     }
                 }
             }
         }
         book.setCopiesNumber(newCopiesNumber);
         bookMap.get(Character.toString(book.getName().charAt(0))).get(bookMap.get(bookKey).size()-1).addBook(book);
-
     }
 
     @Override

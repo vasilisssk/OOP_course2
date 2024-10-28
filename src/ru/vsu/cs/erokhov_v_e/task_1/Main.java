@@ -6,6 +6,7 @@ public class Main {
         Book GCaPoG = new Book("Гарри Чпокер и узник Гулага", "Джоан Боулинг", 500, "Фэнтези", 600);
         Book GK = new Book("Зеленый километр", "Стивен Квин", 350, "Фэнтези", 550);
         Book AHS = new Book("Весь Холм Шерлокс (разборник)", "Андрей Каноэ Дойл", 700, "Детектив", 1150);
+        Book AHS2 = new Book("Весь Холм Шерлокс (разборник)", "Андрей Каноэ Дойл", 500, "Детектив", 1099);
         Book WK = new Book("Ходячий ключ", "Хеллоу Митыдзаки", 200, "Аниме", 350);
         Book SChA = new Book("Приключения матроса Честнягагеля", "Андрей Красов", 178, "Приключения", 123);
         Book GCaPS = new Book("Гарри Чпокер и физматовский камэнь", "Джоан Боулинг", 200, "Фэнтези", 520);
@@ -43,8 +44,9 @@ public class Main {
         System.out.println(bookCloset2);
 
         Library library = new Library("Библиотека имени А. С. Пушкина");
-        library.addBooks(GCaPoG, GK, AHS, WK, SChA, GCaPS, GCaSmoA);
+        library.addBooks(GCaPoG, GK, AHS, WK, SChA, GCaPS, GCaSmoA, AHS2);
+        library.addBooks(AHS2,  AHS2, AHS, AHS2);
         System.out.println(library);
-        System.out.println(GCaPS.getCopiesNumber());
+        System.out.println(AHS.getCopiesNumber());
     }
 }
