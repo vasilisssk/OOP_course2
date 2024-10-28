@@ -35,18 +35,23 @@ public class Main {
         System.out.println("Категории книги GCaPS: " + GCaPS.getCategories().toString());
         System.out.print("\n");
 
-        BookCloset bookCloset1 = new BookCloset();
-        BookCloset bookCloset2 = new BookCloset();
+        BookCloset bookCloset1 = new BookCloset(1);
+        BookCloset bookCloset2 = new BookCloset(2);
         bookCloset1.addBooks(GCaPoG, GK, GCaPS);
+        bookCloset2.addBooks(AHS, WK, SChA);
         bookCloset2.addBooks(AHS, WK, SChA);
         System.out.println(bookCloset1);
         System.out.println(bookCloset2);
 
-        LibraryStorage libraryStorage = new LibraryStorage();
+        LibraryStorage libraryStorage = new LibraryStorage("Библиотека имени А. С. Пушкина");
         libraryStorage.addBook(GCaPoG);
         libraryStorage.addBook(GCaPS);
         libraryStorage.addBook(GK);
         libraryStorage.addBook(AHS);
+        libraryStorage.addBook(GCaSmoA);
+        libraryStorage.addBook(GCaSmoA);
+        libraryStorage.addBook(GCaSmoA);
+        libraryStorage.addBook(GCaSmoA);
         libraryStorage.addBook(GCaSmoA);
         System.out.println(libraryStorage);
     }

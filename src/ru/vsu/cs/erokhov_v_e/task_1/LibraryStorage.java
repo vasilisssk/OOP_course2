@@ -1,15 +1,31 @@
 package ru.vsu.cs.erokhov_v_e.task_1;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class LibraryStorage extends BookStorage {
     private String name;
-    private Map<String, BookCloset> bookMap = new TreeMap<>();
+    private Map<String, List<BookCloset>> bookMap = new TreeMap<>();
+
+    public LibraryStorage(String name) {
+        this.name = name;
+    }
+
     @Override
     public void addBook(Book book) {
-        bookMap.putIfAbsent(Character.toString(book.getName().charAt(0)), new BookCloset());
-        bookMap.get(Character.toString(book.getName().charAt(0))).addBook(book);
+        String bookKey = Character.toString(book.getName().charAt(0));
+        bookMap.putIfAbsent(Character.toString(book.getName().charAt(0)), new ArrayList<>());
+        if (bookMap.get(bookKey).size() == 0) {
+            BookCloset bookCloset = new BookCloset(bookMap.get(bookKey).size()+1);
+            bookMap.get(bookKey).add(bookCloset);
+        }
+        else if (bookMap.get(bookKey).get(bookMap.get(bookKey).size()-1).isFull()) {
+            BookCloset bookCloset = new BookCloset(bookMap.get(bookKey).size()+1);
+            bookMap.get(bookKey).add(bookCloset);
+        }
+        bookMap.get(Character.toString(book.getName().charAt(0))).get(bookMap.get(bookKey).size()-1).addBook(book);
     }
 
     @Override
@@ -35,14 +51,4 @@ public class LibraryStorage extends BookStorage {
     public void setName(String name) {
         this.name = name;
     }
-
-    public Map<String, BookCloset> getBookMap() {
-        return bookMap;
-    }
-
-    public void setBookMap(Map<String, BookCloset> bookMap) {
-        this.bookMap = bookMap;
-    }
-
-
 }

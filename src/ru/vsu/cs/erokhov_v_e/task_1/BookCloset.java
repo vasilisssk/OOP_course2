@@ -4,25 +4,33 @@ import java.util.*;
 
 public class BookCloset extends BookStorage {
     private int serialNumber;
-    private int maxBooksNumber;
+    private int maxBooksNumber = 3;
     private List<Book> bookList = new ArrayList<>();
+
+    public BookCloset(int serialNumber) {
+        this.serialNumber = serialNumber;
+    }
 
     @Override
     public void addBook(Book book) {
-        bookList.add(book);
-        bookList.sort(new Comparator<Book>() {
-            @Override
-            public int compare(Book fBook, Book sBook) {
-                if (fBook.getName().compareTo(sBook.getName()) > 0) {
-                    return 1;
-                } else if (fBook.getName().compareTo(sBook.getName()) == 0) {
-                    return 0;
+        if (!isFull()) {
+            bookList.add(book);
+            bookList.sort(new Comparator<Book>() {
+                @Override
+                public int compare(Book fBook, Book sBook) {
+                    if (fBook.getName().compareTo(sBook.getName()) > 0) {
+                        return 1;
+                    } else if (fBook.getName().compareTo(sBook.getName()) == 0) {
+                        return 0;
+                    }
+                    else {
+                        return -1;
+                    }
                 }
-                else {
-                    return -1;
-                }
-            }
-        });
+            });
+        } else {
+            System.out.printf("Шкаф переполнен! Книга %1s не вместилась\n", book.toString());
+        }
     }
 
     @Override
@@ -30,6 +38,10 @@ public class BookCloset extends BookStorage {
         for (Book book : bookList) {
             addBook(book);
         }
+    }
+
+    public boolean isFull() {
+        return bookList.size() >= maxBooksNumber;
     }
 
     @Override
@@ -67,5 +79,21 @@ public class BookCloset extends BookStorage {
             }
         }
         return false;
+    }
+
+    public int getSerialNumber() {
+        return serialNumber;
+    }
+
+    public void setSerialNumber(int serialNumber) {
+        this.serialNumber = serialNumber;
+    }
+
+    public int getMaxBooksNumber() {
+        return maxBooksNumber;
+    }
+
+    public void setMaxBooksNumber(int maxBooksNumber) {
+        this.maxBooksNumber = maxBooksNumber;
     }
 }
