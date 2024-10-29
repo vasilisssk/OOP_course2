@@ -56,7 +56,7 @@ public class Main {
         bookStorageList.add(library);
         bookStorageList.add(new BookCloset(3));
         for (int i = 0; i < bookStorageList.size(); i++) {
-            bookStorageList.get(i).addBooks(GCaSmoA, GK);
+            bookStorageList.get(i).addBooks(GCaSmoA, GK); //addBooks(GCaSmoA, GK) - и есть полиморфизм, то есть вызывается метод addBooks у кокретного экземпляра класса
             System.out.println(bookStorageList.get(i));
         }
     }
