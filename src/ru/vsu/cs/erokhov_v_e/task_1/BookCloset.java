@@ -4,10 +4,14 @@ import java.util.*;
 
 public class BookCloset extends BookStorage {
     private static String someString = Util.setAndCheck("ШКАФ!");
+    private static String someString2 = Util.setAndCheck("ЭТО ВТОРОЙ ШКАФ!");
     private int myAge = Util.setAndCheck(19);
+    private String myName = Util.setAndCheck("Hiesenberg!");
     private static int someInt;
+    private static int someInt2;
     static {
         someInt = Util.setAndCheck(9);
+        someInt = Util.setAndCheck(10);
     }
     private int serialNumber;
     private int maxBooksNumber = 3;
