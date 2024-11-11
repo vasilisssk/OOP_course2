@@ -3,6 +3,12 @@ package ru.vsu.cs.erokhov_v_e.task_1;
 import java.util.*;
 
 public class BookCloset extends BookStorage {
+    private static String someString = Util.setAndCheck("ШКАФ!");
+    private int myAge = Util.setAndCheck(19);
+    private static int someInt;
+    static {
+        someInt = Util.setAndCheck(9);
+    }
     private int serialNumber;
     private int maxBooksNumber = 3;
     private List<Book> bookList = new ArrayList<>();
